@@ -1,0 +1,36 @@
+{
+  "name": "mordisca",
+  "version": "0.0.1",
+  "author": "Edgar Ribeiro",
+  "description": "MOngo-ReDIS CAching layer",
+  "keywords": [
+    "mongodb",
+    "redis",
+    "cache",
+    "database",
+    "caching",
+    "layer",
+    "mongo"
+  ],
+  "main": "./lib/mordisca",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "mongodb": "^2.0.31",
+    "redis": "^0.12.1",
+    "hiredis": "^0.3.0"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/efmr/Mordisca.git"
+  },
+  "bugs": {
+    "url": "https://github.com/efmr/Mordisca/issues"
+  },
+  "homepage": "https://github.com/efmr/Mordisca#readme",
+  "license": "MIT",
+}
