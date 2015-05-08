@@ -9,8 +9,7 @@
     "cache",
     "database",
     "caching",
-    "layer",
-    "mongo"
+    "layer"
   ],
   "main": "./lib/mordisca",
   "scripts": {
