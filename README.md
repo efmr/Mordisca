@@ -1,2 +1,2 @@
 # Mordisca
-MongooseReDISCAche - Mordisca! (take small bites out of) is a caching layer using Redis for Mongoose
+Mongoose-ReDIS CAching layer, Mordisca! (take small bites out of) is a Redis caching layer for fast interactive applications using mongoDB 
