@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "async": "^0.9.0",
+    "flat": "^1.5.1",
     "hiredis": "^0.3.0",
     "lodash": "^3.8.0",
     "mongodb": "^2.0.31",
