@@ -1,6 +1,6 @@
 var mongo = require('mongodb');
 var redis = require('redis');
-var EJSON = require('mongodb-extended-json');
+var EJSON = require('../lib/extended-json');
 var _ = require('lodash')
 var mordisca = require('../lib/mordisca')
 var doc = {
@@ -8,6 +8,8 @@ var doc = {
   last_seen_at: new Date(),
   display_name: undefined,
   nested: {
+    test: 101.131310000000001,
+    another: 10.24e-2,
     time: new Date(),
     function: function() { return 'a'},
     nested_again: {
