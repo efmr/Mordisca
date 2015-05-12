@@ -11,8 +11,8 @@ var unflatten = require('flat').unflatten;
 
 var doc = {
   _id: mongo.ObjectID(),
-  last_seen_at: new Date(),
-  display_name: undefined,
+  lastSeen: new Date(),
+  displayName: undefined,
   tes2t: 101.131310000000001,
   nested: {
     test: 101.131310000000001,
