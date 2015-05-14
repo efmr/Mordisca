@@ -7,10 +7,10 @@ var _ = require('lodash');
 var EJSON = require('../lib/extended-json');
 var mordisca = require('../lib/mordisca');
 var flatten = require('flat');
-var unflatten = require('flat').unflatten;
+var unflatten = require('flat')
+  .unflatten;
 
 var doc = {
-  _id: mongo.ObjectID(),
   lastSeen: new Date(),
   displayName: undefined,
   tes2t: 101.131310000000001,
@@ -22,11 +22,28 @@ var doc = {
       a: new Date(),
       b: mongo.ObjectID()
     }],
-    function: function() {
-      return 'a';
-    },
     nestedAgain: {
       _id: mongo.ObjectID()
     }
   }
 };
+
+var mrClient = new mordisca.Client()
+  .connect();
+var mr;
+mrClient.once('connect', function(mordisca) {
+  mr = mordisca;
+  mr.collection('mordisca', function(err, mrCol) {
+    if(err) return console.log(err);
+    mrCol.saveDocs([doc, doc],
+      function(err, replies) {
+        if(err) console.log(err);
+        console.log(replies, '-');
+      }
+    );
+  });
+});
+
+mrClient.on('error', function(err) {
+  console.log('err', err);
+});
