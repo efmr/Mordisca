@@ -13,9 +13,11 @@ var unflatten = require('flat')
 var doc = {
   lastSeen: new Date(),
   displayName: undefined,
-  tes2t: 101.131310000000001,
+  test: 101.131310000000001,
+  b: mongo.ObjectID(),
   nested: {
     test: 101.131310000000001,
+    b: mongo.ObjectID(),
     another: 10.24e-2,
     time: new Date(),
     arrayTest: [1231, 13e-2, {
@@ -35,12 +37,17 @@ mrClient.once('connect', function(mordisca) {
   mr = mordisca;
   mr.collection('mordisca', function(err, mrCol) {
     if(err) return console.log(err);
-    mrCol.saveDocs([doc, doc],
+
+    mrCol.createIndex('nested', function(err, reply){
+      mrCol.insert([doc, doc, doc],
       function(err, replies) {
-        if(err) console.log(err);
-        console.log(replies, '-');
-      }
-    );
+        if(err) console.log(err.stack);
+        mrCol.cache.expire(mrCol.redisPrefix+'5558ff1e74893c194a1b17bf', 2);
+        setTimeout(function(){
+          console.log(mrCol)
+        }, 3000)
+      });
+    });
   });
 });
 
