@@ -11,7 +11,7 @@
     "caching",
     "layer"
   ],
-  "main": "./lib/mordisca",
+  "main": "index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
