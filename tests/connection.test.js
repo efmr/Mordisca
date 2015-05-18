@@ -14,19 +14,13 @@ var doc = {
   lastSeen: new Date(),
   displayName: undefined,
   test: 101.131310000000001,
-  b: mongo.ObjectID(),
+  b: new Date(),
   nested: {
     test: 101.131310000000001,
-    b: mongo.ObjectID(),
+    b: new Date(),
     another: 10.24e-2,
     time: new Date(),
-    arrayTest: [1231, 13e-2, {
-      a: new Date(),
-      b: mongo.ObjectID()
-    }],
-    nestedAgain: {
-      _id: mongo.ObjectID()
-    }
+    arrayTest: [1231, 13e-2]
   }
 };
 
@@ -36,17 +30,27 @@ var mr;
 mrClient.once('connect', function(mordisca) {
   mr = mordisca;
   mr.collection('mordisca', function(err, mrCol) {
-    if(err) return console.log(err);
+    if (err) return console.log(err);
 
-    mrCol.createIndex('nested', function(err, reply){
-      mrCol.insert([doc, doc, doc],
-      function(err, replies) {
-        if(err) console.log(err.stack);
-        mrCol.cache.expire(mrCol.redisPrefix+'5558ff1e74893c194a1b17bf', 2);
-        setTimeout(function(){
-          console.log(mrCol)
-        }, 3000)
-      });
+    mrCol.createIndex('b', function(err, reply) {
+
+      console.log(mrCol)
+      mrCol.memcache([doc, doc, doc],
+        function(err, replies) {
+          if (err) console.log(err.stack);
+          //mrCol.cache.expire(mrCol.redisPrefix+'5558ff1e74893c194a1b17bf', 2);
+          setTimeout(function() {
+            mrCol.find(['5559b935f52b8a5c09ab5f62',
+              '5554a8cda21baee40a2674db',
+              '5554a89b6203c8100c727bea',
+              '5554a86dd045dd540ff98c4d',
+              '5554a826ca94316c0dba022e',
+              '5554b5e604dfc7fc10e7ec11'
+            ], function(err, docs) {
+              console.log('response', err, docs);
+            });
+          }, 3000);
+        });
     });
   });
 });
