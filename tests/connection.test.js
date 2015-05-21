@@ -10,6 +10,8 @@ var flatten = require('flat');
 var unflatten = require('flat')
   .unflatten;
 
+//TODO: unit testing
+
 var doc = {
   lastSeen: new Date(),
   displayName: undefined,
