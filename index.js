@@ -1,1 +1,1 @@
-module.exports = require('./lib/mordisca')
+module.exports = require('./lib/mordisca');
