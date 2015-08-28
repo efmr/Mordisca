@@ -4,7 +4,7 @@ var mongo = require('mongodb');
 var redis = require('redis');
 var _ = require('lodash');
 
-var EJSON = require('../lib/extended-json');
+var EJSON = require('extended-json');
 var mordisca = require('../lib/mordisca');
 var flatten = require('flat');
 var unflatten = require('flat').unflatten;

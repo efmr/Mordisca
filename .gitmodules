@@ -1,3 +1,0 @@
-[submodule "lib/extended-json"]
-	path = lib/extended-json
-	url = git@github.com:efmr/extended-json.git
